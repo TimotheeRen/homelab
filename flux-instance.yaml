@@ -13,4 +13,4 @@ spec:
     kind: GitRepository
     url: "https://github.com/TimotheeRen/homelab"
     ref: "refs/heads/main"
-    path: "fluxcd/clusters/dev"
+    path: "fluxcd/clusters/prod"
