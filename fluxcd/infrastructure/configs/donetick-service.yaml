@@ -1,0 +1,6 @@
+spec:
+  type: NodePort
+  ports:
+    - port: 2021
+      targetPort: 2021
+      nodePort: 32021
