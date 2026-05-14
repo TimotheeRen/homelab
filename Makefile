@@ -5,5 +5,8 @@ init:
 	  --create-namespace
 	kubectl apply -f flux-instance.yaml
 
+forward:
+	kubectl port-forward --address 0.0.0.0 svc/donetick 2021
+
 delete:
 	k3d cluster delete Homelab
