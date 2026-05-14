@@ -1,5 +1,5 @@
 init:
-	k3d cluster create --config k3d/config.yaml -p "8080:80@loadbalancer"
+	k3d cluster create --config k3d/config.yaml -p "8080:80@loadbalancer" -p "32021:32021@server:0"
 	helm install flux-operator oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator \
 	  --namespace flux-system \
 	  --create-namespace
