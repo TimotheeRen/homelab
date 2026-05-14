@@ -10,3 +10,8 @@ forward:
 
 delete:
 	k3d cluster delete Homelab
+
+backup:
+	@read -p "Pod name: " POD; \
+	echo $$POD; \
+	kubectl cp $$POD:/donetick-data /data
