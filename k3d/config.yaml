@@ -8,8 +8,6 @@ agents: 1
 options:
   k3s:
     extraArgs:
-      - arg: --disable=traefik
-        nodeFilters: [server:*]
       - arg: --disable=servicelb
         nodeFilters: [server:*]
 
