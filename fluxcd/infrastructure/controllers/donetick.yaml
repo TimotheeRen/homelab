@@ -24,3 +24,8 @@ spec:
         name: donetick
         namespace: flux-system
       interval: 10m
+  values:
+    persistence: 
+      enabled: true
+    ingress:
+      enabled: true
