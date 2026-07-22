@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - donetick.yaml
   - nextcloud.yaml
+  - cnpg.yaml
