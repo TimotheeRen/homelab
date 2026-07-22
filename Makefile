@@ -6,7 +6,7 @@ init:
 	kubectl apply -f flux-instance.yaml
 
 forward:
-	kubectl port-forward --address 0.0.0.0 svc/donetick 2021
+	kubectl port-forward --address 0.0.0.0 svc/donetick 2021 &
 	kubectl port-forward --address 0.0.0.0 svc/nextcloud 8081:8080 -n nextcloud
 
 delete:
