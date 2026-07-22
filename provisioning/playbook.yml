@@ -1,0 +1,4 @@
+- ansible.builtin.import_playbook: playbooks/setup.yml
+  tags: setup
+- ansible.builtin.import_playbook: playbooks/install-homelab.yml
+  tags: setup

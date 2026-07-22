@@ -3,3 +3,53 @@
   become: true
   vars_files:
     - ../secret.yml
+
+  tasks:
+    - name: Get release key
+      ansible.builtin.get_url:
+        url: https://pkgs.k8s.io/core:/stable:/v1.36/deb/Release.key
+        dest: /tmp/kubernetes-release.key
+        owner: root
+        group: root
+        mode: "0600"
+        timeout: 15
+
+    - name: Install APT keyring
+      ansible.builtin.command:
+        cmd: "gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg /tmp/kubernetes-release.key"
+        creates: /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+    - name: Add Kubernetes APT repository
+      ansible.builtin.copy:
+        content: "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.36/deb/ /"
+        dest: "/etc/apt/sources.list.d/kubernetes.list"
+
+    - name: Update APT local repository
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Install Kubernetes CLI
+      ansible.builtin.package:
+        name:
+          - kubectl
+        state: present
+
+    - name: Check if Helm is installed
+      ansible.builtin.stat:
+        path: /usr/local/bin/helm
+      register: helm_bin
+
+    - name: Install Helm
+      ansible.builtin.shell: |
+        curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4 | bash
+      when: not helm_bin.stat.exists
+
+    - name: Check if K3d is installed
+      ansible.builtin.stat:
+        path: /usr/local/bin/helm
+      register: k3d_bin
+
+    - name: Install K3d
+      ansible.builtin.shell: |
+        curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+      when: not k3d_bin.stat.exists
