@@ -43,7 +43,7 @@ spec:
     externalDatabase:
       enabled: true
       type: postgresql
-      host: "nextcloud-postgres-cluster-rw"
+      host: "nextcloud-postgres-cluster-rw:5432"
       port: 5432
       database: "app"
       existingSecret:
