@@ -1,0 +1,5 @@
+- name: Setup servers
+  hosts: servers
+  become: true
+  vars_files:
+    - ../secret.yml
