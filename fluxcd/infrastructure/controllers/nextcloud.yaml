@@ -51,3 +51,8 @@ spec:
         secretName: "nextcloud-postgres-cluster-app"
         usernameKey: "username"
         passwordKey: "password"
+    nextcloud:
+      trustedDomains:
+        - nextcloud.kube.home
+        - 192.168.1.59
+        - localhost
