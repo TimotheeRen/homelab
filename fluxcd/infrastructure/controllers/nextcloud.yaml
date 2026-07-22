@@ -56,3 +56,15 @@ spec:
         - nextcloud.kube.home
         - 192.168.1.59
         - localhost
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 120
+
+    readinessProbe:
+      enabled: true
+      initialDelaySeconds: 120
+
+    startupProbe:
+      enabled: true
+      failureThreshold: 30
+      periodSeconds: 10
