@@ -38,7 +38,3 @@ spec:
       enabled: true
       accessMode: ReadWriteOnce
       size: 12Gi
-  livenessProbe:
-    enabled: false
-  readinessProbe:
-    enabled: false
