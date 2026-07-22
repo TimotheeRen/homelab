@@ -29,3 +29,8 @@ spec:
         name: nextcloud
         namespace: nextcloud
       interval: 10m
+  values:
+    service:
+      type: NodePort
+      nodePort: 32080
+      port: 8080
