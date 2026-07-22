@@ -43,7 +43,7 @@ spec:
     externalDatabase:
       enabled: true
       type: postgresql
-      host: "nextcloud-postgres-cluster-rw:5432"
+      host: "nextcloud-postgres-cluster-rw"
       port: 5432
       database: "app"
       existingSecret:
@@ -56,15 +56,13 @@ spec:
         - nextcloud.kube.home
         - 192.168.1.59
         - localhost
-    livenessProbe:
-      enabled: true
-      initialDelaySeconds: 120
-
-    readinessProbe:
-      enabled: true
-      initialDelaySeconds: 120
-
     startupProbe:
       enabled: true
-      failureThreshold: 30
+      failureThreshold: 60
       periodSeconds: 10
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 300
+    readinessProbe:
+      enabled: true
+      initialDelaySeconds: 60
