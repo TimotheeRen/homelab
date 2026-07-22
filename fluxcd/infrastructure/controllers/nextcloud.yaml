@@ -38,3 +38,16 @@ spec:
       enabled: true
       accessMode: ReadWriteOnce
       size: 12Gi
+    internalDatabase:
+      enabled: false
+    externalDatabase:
+      enabled: true
+      type: postgresql
+      host: "nextcloud-postgres-cluster-rw"
+      port: 5432
+      database: "app"
+      existingSecret:
+        enabled: true
+        secretName: "nextcloud-postgres-cluster-app"
+        usernameKey: "username"
+        passwordKey: "password"
