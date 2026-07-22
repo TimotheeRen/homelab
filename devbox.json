@@ -2,7 +2,8 @@
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.17.2/.schema/devbox.schema.json",
   "packages": [
     "ansible@latest",
-    "sshpass@latest"
+    "sshpass@latest",
+    "kubernetes-helm@latest"
   ],
   "shell": {
     "init_hook": [

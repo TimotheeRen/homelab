@@ -34,3 +34,7 @@ spec:
       type: NodePort
       nodePort: 32080
       port: 8080
+    persistence:
+      enabled: true
+      accessMode: ReadWriteOnce
+      size: 12Gi
