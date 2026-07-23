@@ -1,0 +1,23 @@
+- name: Post install steps
+  hosts: servers
+  become: true
+  gather_facts: false
+  vars_files:
+    - ../secret.yml
+
+  tasks:
+    - name: Create backup folder
+      ansible.builtin.file:
+        path: /home/pi/backup
+        state: directory
+        owner: pi
+        group: pi
+      become: false
+
+    - name: Add daily Nextcloud files backup
+      ansible.builtin.cron:
+        name: Backup nextcloud files
+        minute: "0"
+        hour: "12"
+        job: /usr/local/bin/kubectl -n nextcloud exec -i deployment/nextcloud -- tar -czf - -C /var/www/html . > /home/pi/backup/backup-nextcloud-$(date +\%Y-\%m-\%d).tar.gz
+        user: pi

@@ -2,3 +2,5 @@
   tags: setup
 - ansible.builtin.import_playbook: playbooks/install-homelab.yml
   tags: setup
+- ansible.builtin.import_playbook: playbooks/post-install.yml
+  tags: post-install
