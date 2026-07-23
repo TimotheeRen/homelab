@@ -53,7 +53,7 @@ spec:
         passwordKey: "password"
     nextcloud:
       trustedDomains:
-        - nextcloud.kube.home
+        - lab.home
         - 192.168.1.59
         - localhost
     startupProbe:
